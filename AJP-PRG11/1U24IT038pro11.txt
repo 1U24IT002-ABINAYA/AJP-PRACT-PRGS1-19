@@ -1,4 +1,4 @@
-In sql:
+n sql:
 
 create database bm;
 use bm;
@@ -140,3 +140,5 @@ private static void selectAuthorsForTitle(Connection connection, String title) t
         }
     }
 }
+
+
