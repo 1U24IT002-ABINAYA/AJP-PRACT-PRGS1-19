@@ -1,0 +1,79 @@
+Program 10.1
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.*;
+
+class filesearch
+{
+  public static void main(String ar[])
+  {
+    Scanner sc = new Scanner(System.in);
+    System.out.println("Enter the account number to be searched in the file:");
+    String find = sc.nextLine();
+    try
+    {
+      BufferedReader br = new BufferedReader(new
+      FileReader("E:\\oldmast.txt"));
+      String line;
+      boolean details = false;
+      while((line=br.readLine())!=null)
+      {
+        if(line.contains(find))
+        {
+          details = true;
+        }
+      }
+      br.close();
+      if(details)
+      {
+        System.out.println("Details found in the file");
+      }
+      else
+      {
+        System.out.println("Details not found in the file");
+      }
+    }
+    catch(IOException e)
+    {
+      System.out.println("Excpetion message"+e);
+    }
+  }
+}
+
+Program 10.2
+
+import java.util.*;
+public class WriteResponsesToFile
+{
+  public static void main(String[] args)
+  {
+    try
+    {
+      Formatter formatter = new Formatter("e:\\numbers.txt");
+      Scanner scanner = new Scanner(System.in);
+      System.out.println("Enter survey responses type done to finish");
+      String input;
+      while (!(input = scanner.nextLine()).equalsIgnoreCase("done"))
+      {
+        try
+        {
+          int number = Integer.parseInt(input);
+          formatter.format("%d%n", number);
+        }
+        catch (NumberFormatException e)
+        {
+          System.out.println("Invalid input"+e);
+        }
+      }
+      formatter.close();
+      scanner.close();
+      System.out.println("Responses written to numbers.txt successfully.");
+    }
+    catch (FileNotFoundException e)
+    {
+      System.out.println("Error: File not found.");
+    }
+  }
+}
